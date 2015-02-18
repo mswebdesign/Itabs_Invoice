@@ -44,6 +44,14 @@
                 </observers>
             </payment_method_is_active>
         </events>
+        <resources>
+            <itabs_invoice_setup>
+                <setup>
+                    <module>Itabs_Invoice</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+            </itabs_invoice_setup>
+        </resources>
     </global>
     <adminhtml>
         <translate>

@@ -32,4 +32,28 @@ class Itabs_Invoice_Test_Config_Config extends EcomDev_PHPUnit_Test_Case_Config
             $this->assertModuleDepends($depends);
         }
     }
+
+    /**
+     * @test
+     */
+    public function setupResourceIsDefined()
+    {
+        $this->assertSetupResourceDefined('Itabs_Invoice', 'itabs_invoice_setup');
+    }
+
+    /**
+     * @test
+     */
+    public function setupResourceExists()
+    {
+        $this->assertSetupResourceExists('Itabs_Invoice', 'itabs_invoice_setup');
+    }
+
+    /**
+     * @test
+     */
+    public function setupScriptVersion()
+    {
+        $this->assertSetupScriptVersions(EcomDev_PHPUnit_Constraint_Config_Resource_Script::TYPE_SCRIPT_SCHEME, '1.2.0', null, 'Itabs_Invoice', 'itabs_invoice_setup');
+    }
 }

@@ -35,7 +35,7 @@ class Itabs_Invoice_Model_Validation
      */
     public function isValid()
     {
-        $isValid = $this->hasSpecificCustomerGroup()
+        $isValid = ($this->hasSpecificCustomerGroup() || $this->isAllowedForCurrentCustomer())
             && $this->hasMinimumOrderCount()
             && $this->hasMinimumOrderAmount()
             && $this->hasOpenInvoices()
@@ -65,6 +65,20 @@ class Itabs_Invoice_Model_Validation
         }
 
         return true;
+    }
+
+    /**
+     * Check if the customer is explicitly allowed to pay by invoice
+     *
+     * @return bool
+     */
+    public function isAllowedForCurrentCustomer()
+    {
+        if (true === (bool)Mage::getSingleton('customer/session')->getCustomer()->getInvoiceAllowed()) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

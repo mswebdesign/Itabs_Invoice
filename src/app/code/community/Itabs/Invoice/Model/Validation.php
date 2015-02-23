@@ -59,7 +59,7 @@ class Itabs_Invoice_Model_Validation
     {
         if (!Mage::getStoreConfigFlag('payment/invoice/specificgroup_all')) {
             $allowedGroupIds = explode(',', Mage::getStoreConfig('payment/invoice/specificgroup'));
-            if (!in_array($this->_getCustomerGroupId(), $allowedGroupIds)) {
+            if (in_array('', $allowedGroupIds) || !in_array($this->_getCustomerGroupId(), $allowedGroupIds)) {
                 return false;
             }
         }
